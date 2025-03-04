@@ -29,7 +29,8 @@ class BasicMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.basic')
+        return $this->subject('Mail from Laravel 8')
+                    ->view('emails.basic')
                     ->with('details', $this->details);
     }
 }

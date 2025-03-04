@@ -2,15 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\ProductController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/send-mail', function () {
-    return 'heloo';
-});
-Route::get('/sendmail', [MailController::class, 'sendEmail']);
+Route::get('/', [ProductController::class, 'index']);
+Route::get('/user/{userId}/products', [ProductController::class, 'showUserProducts'])->name('user.products');
 
-// Route::resource('sendmail', MailController::class);
-
-
+Route::get('/login', function () {
+    return 'Need token';
+})->name('login');

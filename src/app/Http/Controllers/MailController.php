@@ -9,16 +9,9 @@ class MailController extends Controller
 {
     public function sendEmail()
     {
-        var_dump('here');
-        // return BasicMailable::new()
-        //     ->subject('Basic Mailable')
-        //     ->view('emails.basic')
-        //     ->to('test@abv.bg')
-        //     ->send();
-        //     var_dump($this->sendEmail());
-        $recipient = 'test@abv.bg';
+        $recipient = 'recipient@email.com';
         $details = [
-            'name' => 'Customer Name',
+            'name' => 'dobata test',
             'action_url' => 'https://example.com/login',
         ];
         Mail::to($recipient)->send(new BasicMailable($details));

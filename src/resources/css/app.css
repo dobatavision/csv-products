@@ -10,3 +10,7 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.bg-secondary {
+    background-color: #c5c5cd !important; /* Replace this with your desired color */
+}
