@@ -20,6 +20,17 @@ php artisan key:generate
 chmod -R 777 /mnt/csv-products/storage
 chmod -R 777 /mnt/csv-products/bootstrap/cache
 
+sleep 2
+# Update PHP configuration to increase upload_max_filesize and post_max_size
+sed -i 's/upload_max_filesize = .*/upload_max_filesize = 20M/' /etc/php/8.3/fpm/php.ini
+sed -i 's/post_max_size = .*/post_max_size = 20M/' /etc/php/8.3/fpm/php.ini
+sed -i 's/memory_limit = .*/memory_limit = 512M/' /etc/php/8.3/fpm/php.ini
+sed -i 's/max_execution_time = .*/max_execution_time = 300/' /etc/php/8.3/fpm/php.ini
+echo "date.timezone = Europe/Sofia" >> /etc/php/8.3/fpm/php.ini
+
+# Restart PHP-FPM to apply the changes
+service php8.3-fpm restart
+
 #To be sure that the database is up and running
 sleep 10
 
@@ -28,17 +39,6 @@ php artisan cache:clear
 php artisan view:clear
 php artisan route:clear
 
-
-sleep 2
-
-# Update PHP configuration to increase upload_max_filesize and post_max_size
-sed -i 's/upload_max_filesize = .*/upload_max_filesize = 20M/' /etc/php/8.3/fpm/php.ini
-sed -i 's/post_max_size = .*/post_max_size = 20M/' /etc/php/8.3/fpm/php.ini
-sed -i 's/memory_limit = .*/memory_limit = 512M/' /etc/php/8.3/fpm/php.ini
-sed -i 's/max_execution_time = .*/max_execution_time = 300/' /etc/php/8.3/fpm/php.ini
-
-# Restart PHP-FPM to apply the changes
-service php8.3-fpm restart
 
 echo "* * * * * cd /mnt/csv-products && php artisan schedule:run >> /dev/null 2>&1" | crontab -
 service cron start

@@ -1,4 +1,5 @@
-# Docker Ubuntu and MySQL + Laravel Setup
+# Docker Ubuntu and MySQL
+# PHP 8.3 / Laravel 
 
 ## Setup Instructions
 
@@ -18,7 +19,7 @@
     docker-py version: 5.0.3
 
     CPython version: 3.12.3
-    
+
     OpenSSL version: OpenSSL 3.0.13 30 Jan 2024
 
 

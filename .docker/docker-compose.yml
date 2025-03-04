@@ -38,6 +38,7 @@ services:
       - mynet
     volumes:
       - mysql_store:/var/lib/mysql
+    command: --default-time-zone='Europe/Sofia'
    
   # cache:
   #   image: redis:latest
