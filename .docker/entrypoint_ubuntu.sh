@@ -43,10 +43,10 @@ php artisan route:clear
 echo "* * * * * cd /mnt/csv-products && php artisan schedule:run >> /dev/null 2>&1" | crontab -
 service cron start
 
-sleep 2
+sleep 5
 
 php artisan queue:work --timeout=300 --memory=512
 
-tail -f /dev/null
+# tail -f /dev/null
 
 

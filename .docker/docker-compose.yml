@@ -10,6 +10,7 @@ services:
       dockerfile: Dockerfile
     environment:
       TZ: Europe/Sofia
+      DEBIAN_FRONTEND: noninteractive
     restart: unless-stopped
     entrypoint: /entrypoint.sh
     ports:
@@ -18,9 +19,9 @@ services:
       - mynet
     volumes:
       - ../src/:/mnt/csv-products
+    command: --default-time-zone='Europe/Sofia'
     depends_on:
       - mysql
-      # - cache
 
   mysql:
     image: mysql:latest
@@ -32,6 +33,7 @@ services:
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypass
       TZ: Europe/Sofia
+      DEBIAN_FRONTEND: noninteractive
     ports:
       - "33306:3306"
     networks:
@@ -40,21 +42,9 @@ services:
       - mysql_store:/var/lib/mysql
     command: --default-time-zone='Europe/Sofia'
    
-  # cache:
-  #   image: redis:latest
-  #   container_name: redis
-  #   hostname: redis
-  #   restart: always
-  #   ports:
-  #     - '6379:6379'
-  #   command: redis-server --save 20 1 --loglevel warning --requirepass redispass
-  #   networks:
-  #     - mynet
-  
 networks:
   mynet:
     driver: bridge
 volumes:
   mysql_store:
     driver: local
-  # redis_store:

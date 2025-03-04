@@ -35,6 +35,12 @@
 Remove all containers, images, networks, and volumes:
 ```bash
 docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) && docker network prune && docker system prune -a -y && docker volume prune -a -y
+
+service php8.3-fpm restart
+
+php artisan app:csv_import
+php artisan schedule:list
+php artisan queue:work
 ```
 
 ## API Endpoints
@@ -77,9 +83,9 @@ Example:
 You should use it for value in bearer auth while upload files.
 You can use Postman for all request.
 
-## Artisan Commands
+## Commands
 
 ```bash
-php artisan app:csv_import
-php artisan schedule:list
+service php8.3-fpm restart
+
 ```
