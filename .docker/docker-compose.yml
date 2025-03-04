@@ -24,16 +24,16 @@ services:
 
   mysql:
     image: mysql:latest
-    container_name: mysql8
-    hostname: mysql8
+    container_name: mysql_csv
+    hostname: mysql_csv
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: mydb
+      MYSQL_DATABASE: csvDB
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypass
       TZ: Europe/Sofia
     ports:
-      - "3307:3306"
+      - "33306:3306"
     networks:
       - mynet
     volumes:
