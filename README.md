@@ -1,5 +1,5 @@
 # Docker Ubuntu and MySQL
-# PHP 8.3 / Laravel 
+# PHP 8.3.17 / Laravel 12.0.1
 
 ## Setup Instructions
 
@@ -83,9 +83,20 @@ Example:
 You should use it for value in bearer auth while upload files.
 You can use Postman for all request.
 
-## Commands
+### Email send and .ENV
+Env is auto generated from example there have mysql credential (I now is not good practice but for easier test).
 
-```bash
-service php8.3-fpm restart
+I have tested email with [mailtrap.io](https://mailtrap.io/inboxes/) and it's working as well, 
 
-```
+just add your SMTP credentials from "Email Testing > Inboxes > SMTP" on their site after login.
+
+MAIL_USERNAME=your_mailtrap_username
+
+MAIL_PASSWORD=your_mailtrap_password
+
+ps aux > "kill PID of php artisan queue:work" 
+
+and start it again "php artisan queue:work" To apply new env credentials
+
+
+
