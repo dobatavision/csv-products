@@ -10,11 +10,15 @@
 
 2. Build and start the Docker containers:
    ```bash
+   cd csv-products/.docker
    docker-compose up --build -d
    ```
     docker-compose version 1.29.2, build unknown
+
     docker-py version: 5.0.3
+
     CPython version: 3.12.3
+    
     OpenSSL version: OpenSSL 3.0.13 30 Jan 2024
 
 
