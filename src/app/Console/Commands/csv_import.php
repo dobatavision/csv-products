@@ -29,6 +29,7 @@ class csv_import extends Command
      */
     public function handle()
     {
+        echo(date('Y-m-d H:i:s', time()));
         // $upload = Upload::find(41);
         // // dd($upload->user_id);
         //     $user = User::find($upload->user_id);

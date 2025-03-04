@@ -10,7 +10,6 @@ services:
       dockerfile: Dockerfile
     environment:
       TZ: Europe/Sofia
-      DEBIAN_FRONTEND: noninteractive
     restart: unless-stopped
     entrypoint: /entrypoint.sh
     ports:
@@ -19,8 +18,6 @@ services:
       - mynet
     volumes:
       - ../src/:/mnt/csv-products
-    command: --default-time-zone='Europe/Sofia'
-    depends_on:
       - mysql
 
   mysql:
@@ -33,14 +30,12 @@ services:
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypass
       TZ: Europe/Sofia
-      DEBIAN_FRONTEND: noninteractive
     ports:
       - "33306:3306"
     networks:
       - mynet
     volumes:
       - mysql_store:/var/lib/mysql
-    command: --default-time-zone='Europe/Sofia'
    
 networks:
   mynet:

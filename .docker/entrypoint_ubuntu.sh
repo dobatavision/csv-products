@@ -45,8 +45,8 @@ service cron start
 
 sleep 5
 
-php artisan queue:work --timeout=300 --memory=512
+php artisan queue:work --tries=3 --timeout=300 --memory=512
 
-# tail -f /dev/null
+tail -f /dev/null
 
 
